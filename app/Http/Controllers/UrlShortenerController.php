@@ -307,7 +307,7 @@ class UrlShortenerController extends Controller
 
 
     /**
-     * gets the total visits for a given url
+     * Gets the total visits for a given url
      *
      * @return int
      */
@@ -319,13 +319,21 @@ class UrlShortenerController extends Controller
 
     }
 
-    
+   /**
+    * Gets the application base URL 
+    *
+    * @return void
+    */  
     public function getAppBaseUrl(){
         
         return UrlFacade::to('/').'/';
     }
 
-
+    /**
+     * Generates the shorten url
+     *
+     * @return string
+     */
     public function generateShortenUrl(){
 
        return $this->getAppBaseUrl().$this->url->short_url;

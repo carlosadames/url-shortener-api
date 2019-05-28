@@ -8,16 +8,15 @@
 
 
 ## Index
-* Description
-* Why?
-* How To Use It
-* Screenshots
-* Table Schemas
-* System Requirements
-* Installing
-* Upgrading
-* Changelog
-* Contributing
+- [Description](#description)
+- [Why?](#why)
+- [How To Use It](#usage)
+- [Screenshots](#screenshots)
+- [Table Schema](#how-data-is-stored)
+- [System Requirements](#requirements)
+- [Installing](#installing)
+- [Contributing](#contributing)
+
 
 ## Description 
 
@@ -30,13 +29,45 @@ forums) or truncated.
 
 ## How to Use It
 
+
+
 ## Screenshots
+
+![homestead.yaml](https://raw.githubusercontent.com/carlosadames/url-shortener-api/master/src/views/screenshots/homestead.yaml.png)
+
+![migrations](https://raw.githubusercontent.com/carlosadames/url-shortener-api/master/src/views/screenshots/migrations.png)
+
+![create-api-endpoint](https://raw.githubusercontent.com/carlosadames/url-shortener-api/master/src/views/screenshots/create-api-endpoint.png)
+
+![get-top-urls](https://raw.githubusercontent.com/carlosadames/url-shortener-api/master/src/views/screenshots/get-top-urls.png)
+
+
 
 ## Table Schemas
 
+Data is stored in the urls table.  
+
+
 ## Installation
 
+#### Clone the project:
 
+    git clone https://github.com/carlosadames/url-shortener-api.git
+
+
+#### Install dependencies:
+
+    composer install
+
+
+#### Create .env file:
+
+    mv .env.example .env
+
+
+```php
+php artisan migrate
+``` 
 
 ## License
 
