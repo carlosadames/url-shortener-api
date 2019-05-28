@@ -33,13 +33,13 @@ forums) or truncated.
 
 ## Screenshots
 
-![homestead.yaml](https://raw.githubusercontent.com/carlosadames/url-shortener-api/master/src/views/screenshots/homestead.yaml.png)
+![homestead.yaml](https://github.com/carlosadames/url-shortener-api/blob/master/homestead.yaml.png)
 
-![migrations](https://raw.githubusercontent.com/carlosadames/url-shortener-api/master/src/views/screenshots/migrations.png)
+![migrations](https://github.com/carlosadames/url-shortener-api/blob/master/migrations.png)
 
-![create-api-endpoint](https://raw.githubusercontent.com/carlosadames/url-shortener-api/master/src/views/screenshots/create-api-endpoint.png)
+![create-api-endpoint](https://github.com/carlosadames/url-shortener-api/blob/master/%20create-api-endpoint.png)
 
-![get-top-urls](https://raw.githubusercontent.com/carlosadames/url-shortener-api/master/src/views/screenshots/get-top-urls.png)
+![get-top-urls](https://github.com/carlosadames/url-shortener-api/blob/master/get-top-urls.png)
 
 
 
@@ -63,11 +63,30 @@ Data is stored in the urls table.
 #### Create .env file:
 
     mv .env.example .env
+    
 
+#### Create migration file:
+
+As shown in previously in the screenshots
 
 ```php
-php artisan migrate
-``` 
+    public function up()
+    {
+        Schema::create('urls', function (Blueprint $table) {
+            $table->bigIncrements('id')->index();
+            $table->string('long_url')->unique()->index();
+            $table->string('short_url')->unique()->nullable()->index();
+            $table->integer('visits')->default('0');
+            $table->timestamps();
+        });
+    }
+```
+
+
+#### Run migrations:
+
+    php artisan migrate
+    
 
 ## License
 
