@@ -15,6 +15,7 @@
 - [Installing](#installation)
 - [How To Use It](#usage)
 - [Contributing](#contributing)
+- [License](#license)
 
 
 ## Description 
@@ -131,6 +132,11 @@ How it works and how to use it? This Simple application consist on an API with t
 
 The first end point creates a new shorten link and the second gets the top 100 most visited URLS.
 
+
+## Contributing
+
+    Pull requests and issues are more than welcome.
+    
 
 ## License
 
