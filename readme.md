@@ -126,17 +126,18 @@ This will seed the database with fake data for testing purposes.
 How it works and how to use it? This Simple application consist on an API with the following two end points:
 
 
-     POST http://localhost/api/v1/url/create?long_url={LONG_URL}
+     POST http://192.168.10.10/api/v1/url/create?long_url={LONG_URL}
     
-     GET  http://localhost/api/v1/get/top
+     GET  http://192.168.10.10/api/v1/get/top
 
-The first end point creates a new shorten link and the second gets the top 100 most visited URLS.
+The first end point creates a new shorten link and the second gets the top 100 most visited URLS. If you access through 
+the web browser to the shorten link it should redirect you to the intended URL.
 
 
 ## Contributing
 
     Pull requests and issues are more than welcome.
-    
+
 
 ## License
 
