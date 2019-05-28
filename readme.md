@@ -10,11 +10,10 @@
 ## Index
 - [Description](#description)
 - [Why?](#why)
-- [How To Use It](#usage)
 - [Screenshots](#screenshots)
 - [Table Schema](#how-data-is-stored)
-- [System Requirements](#requirements)
-- [Installing](#installing)
+- [Installing](#installation)
+- [How To Use It](#usage)
 - [Contributing](#contributing)
 
 
@@ -26,18 +25,6 @@ A simple URL Shortener application in Laravel Lumen. The official documentation 
 
 There are several reasons to use URL shortening. Often regular unshortened links may be aesthetically unpleasing. Many web developers pass descriptive attributes in the URL to represent data hierarchies, command structures, transaction paths or session information. This can result in URLs that are hundreds of characters long and that contain complex character patterns. Such URLs are difficult to memorize, type-out or distribute. As a result, long URLs must be copied-and-pasted for reliability. Thus, short URLs may be more convenient for websites or hard copy publications (e.g. a printed magazine or a book), the latter often requiring that very long strings be broken into multiple lines (as is the case with some e-mail software or internet 
 forums) or truncated.
-
-
-## Usage
-
-How it works and how to use it? This Simple application consist on an API with the following two end points:
-
-
-     POST http://localhost/api/v1/url/create?long_url={LONG_URL}
-    
-     GET  http://localhost/api/v1/get/top
-
-The first end point creates a new shorten link and the second gets the top 100 most visited URLS.
 
 
 ## Screenshots
@@ -54,14 +41,41 @@ The first end point creates a new shorten link and the second gets the top 100 m
 
 
 
-## Table Schemas
+## How data is stored
 
 Data is stored in the urls table. See migration file below for reference.
 
 
 ## Installation
 
+If using Homestead, please check the installation details at https://lumen.laravel.com/docs/5.8/installation. Once you have 
+properly install and configure Homestead, proceed. Check Homestead.yaml configuation example in the [Screenshots](#screenshots) section.
+
+
+#### Provisioning the current VM
+
+Inside your Homestead folder in order to set up your environment run: 
+
+    vagrant provision --reaload
+
+
+#### Configuring the guest machine
+
+In order to configure the guest machines according to your Vagrantfile run:
+
+    vagrant up
+
+
+#### Configuring the guest machine
+
+Run this command in order to SSH into the running Vagrant machine and get access to a shell:
+
+    vagrant ssh
+
+
 #### Clone the project:
+
+Once you are into your project folder as specified in your Vagrant file clone the repository:
 
     git clone https://github.com/carlosadames/url-shortener-api.git
 
@@ -97,7 +111,26 @@ As shown in previously in the screenshots
 #### Run migrations:
 
     php artisan migrate
+
+
+#### Seeding the database:  
+
+This will seed the database with fake data for testing purposes.
+
+    php artisan db:seed
+
+
+## Usage
+
+How it works and how to use it? This Simple application consist on an API with the following two end points:
+
+
+     POST http://localhost/api/v1/url/create?long_url={LONG_URL}
     
+     GET  http://localhost/api/v1/get/top
+
+The first end point creates a new shorten link and the second gets the top 100 most visited URLS.
+
 
 ## License
 
