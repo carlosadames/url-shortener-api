@@ -107,12 +107,11 @@ class UrlShortenerController extends Controller
         if(!isset($this->url)){
 
             $this->message = "Shorten Url not found";
-
             return response()->json(array('message' => $this->message),404);
-
         }
 
-        $this->shortUrl =  $this->generateShortenUrl();
+        $this->shortUrl = $this->url->short_url;
+        $this->updateUrlVisits();
         $this->message = "Shorten Url found";
         return redirect()->to($this->url->long_url);
 
@@ -182,8 +181,8 @@ class UrlShortenerController extends Controller
         }
 
         if($this->urlExists($this->longUrl)){
-            $this->updateUrlVisits();
             $this->message = "Resource found in database";
+            $this->url->short_url = $this->generateShortenUrl();
             return response()->json(array('results' => $this->url,'message' => $this->message, 'status_code' => 200),200);
         }
 
@@ -197,8 +196,7 @@ class UrlShortenerController extends Controller
         
         $this->url->short_url = $this->generateShortenUrl();
         $this->message = "resource succesfully created";      
-        return response()->json(array('results' => array('urls' => $this->url),'message' => $this->message, 'status_code' => 201),201);
-    }
+        return response()->json(array('results' =>  $this->url,'message' => $this->message, 'status_code' => 201),201);    }
 
 
     /**
@@ -293,7 +291,7 @@ class UrlShortenerController extends Controller
     public function updateUrlVisits(){
         
         try{
-            $this->urlModel->UpdateVisits($this->longUrl, $this->getUrlVisits() + 1);
+            $this->urlModel->UpdateVisits($this->shortUrl, $this->getUrlVisits() + 1);
             $this->urlModel->refresh();
             return true;
         }
@@ -313,7 +311,7 @@ class UrlShortenerController extends Controller
      */
     public function getUrlVisits(){
 
-        $this->visits = $this->urlModel->getUrlTotalVisits($this->longUrl);
+        $this->visits = $this->urlModel->getUrlTotalVisits($this->shortUrl);
 
         return $this->visits;
 

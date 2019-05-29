@@ -41,20 +41,26 @@ class Url extends Model
    /**
     * Update visits in the database
     *
-    * @param string $longUrl the long url
+    * @param string $shortUrl the short url
     * @param int $visits the given visits for this url
     *
     * @return array|null
     */
-   public function UpdateVisits($longUrl = null, $visits){
+   public function UpdateVisits($shortUrl = null, $visits){
 
-      return Url::where('long_url','=', $longUrl)->update(['visits' => $visits]);
+      return Url::where('short_url','=', $shortUrl)->update(['visits' => $visits]);
 
    }
 
-   public function getUrlTotalVisits($longUrl = null){
+   /**
+    * Get total visits of an url
+    *
+    * @param  $shortUrl
+    * @return void
+    */
+   public function getUrlTotalVisits($shortUrl = null){
 
-      $total = Url::where('long_url','=', $longUrl)->first();
+      $total = Url::where('short_url','=', $shortUrl)->first();
 
       return $total->visits;
 
