@@ -197,7 +197,7 @@ class UrlShortenerController extends Controller
         
         $this->url->short_url = $this->generateShortenUrl();
         $this->message = "resource succesfully created";      
-        return response()->json(array('results' => array('urls' => $this->url),'message' => $this->message, 'status_code' => 201),201);
+        return response()->json(array('results' =>  $this->url,'message' => $this->message, 'status_code' => 201),201);
     }
 
 
